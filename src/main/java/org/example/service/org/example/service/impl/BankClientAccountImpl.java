@@ -68,6 +68,7 @@ public class BankClientAccountImpl implements IBankAccountService {
             logger.severe("Deposit failed: Amount must be positive. Provided amount: " + amount);
             throw new IllegalArgumentException("Amount must be positive");
         }
+
         final var transaction = new Transaction(amount);
         transactions.put(transaction.transactionId(), transaction);
         logger.info("Deposit successful. Amount: " + amount + " €, Transaction ID: " + transaction.transactionId());
