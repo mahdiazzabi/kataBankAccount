@@ -1,5 +1,6 @@
 package org.example.service.impl;
 
+import org.example.exception.InsufficientFundsException;
 import org.example.service.IBankAccountService;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -41,6 +42,20 @@ public class BankClientAccountImplTest {
         bankAccount.deposit(depositAmount);
 
         Assertions.assertEquals(expectedBalance, bankAccount.currentBalance());
+    }
+
+    @Test
+    public void withdraw_should_throw_when_insufficient_funds() {
+        IBankAccountService account = new BankClientAccountImpl();
+        account.deposit(new BigDecimal("50.00"));
+
+        BigDecimal attempt = new BigDecimal("100.00");
+
+        Exception exception = assertThrows(InsufficientFundsException.class, () -> {
+            account.withdraw(attempt);
+        });
+
+        assertTrue(exception.getMessage().contains("Insufficient funds"));
     }
 
     @Test

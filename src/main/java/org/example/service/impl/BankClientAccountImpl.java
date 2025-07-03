@@ -1,6 +1,7 @@
 package org.example.service.impl;
 
 import org.example.domain.Transaction;
+import org.example.exception.InsufficientFundsException;
 import org.example.service.IBankAccountService;
 
 import java.math.BigDecimal;
@@ -73,6 +74,24 @@ public class BankClientAccountImpl implements IBankAccountService {
         final var transaction = new Transaction(amount);
         transactions.put(transaction.transactionId(), transaction);
         logger.info("Deposit successful. Amount: " + amount + " €, Transaction ID: " + transaction.transactionId());
+    }
+
+    @Override
+    public void withdraw(BigDecimal amount) {
+        if (amount.compareTo(BigDecimal.ZERO) <= 0) {
+            logger.severe("Withdraw failed: Amount must be positive. Provided amount: " + amount);
+            throw new IllegalArgumentException("Amount must be positive");
+        }
+
+        BigDecimal currentBalance = currentBalance();
+        if (amount.compareTo(currentBalance) > 0) {
+            logger.severe("Withdraw failed: Insufficient funds. Tried to withdraw: " + amount + ", Current balance: " + currentBalance);
+            throw new InsufficientFundsException(amount, currentBalance);
+        }
+
+        final var transaction = new Transaction(amount.negate());
+        transactions.put(transaction.transactionId(), transaction);
+        logger.info("Withdraw successful. Amount: " + amount + " €, Transaction ID: " + transaction.transactionId());
     }
 
     /**
