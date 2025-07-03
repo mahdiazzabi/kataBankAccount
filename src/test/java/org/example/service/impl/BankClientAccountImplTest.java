@@ -1,4 +1,4 @@
-package org.example.service.org.example.service.impl;
+package org.example.service.impl;
 
 import org.example.service.IBankAccountService;
 import org.junit.Test;
@@ -30,7 +30,7 @@ public class BankClientAccountImplTest {
         assertThrows(IllegalArgumentException.class, () -> bankAccount.deposit(invalidAmount));
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "deposit({0}) should result in balance {1}")
     @CsvSource({
             "10, 10",
             "0.99, 0.99"

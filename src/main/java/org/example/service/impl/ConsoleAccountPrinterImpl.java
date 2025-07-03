@@ -1,4 +1,4 @@
-package org.example.service.org.example.service.impl;
+package org.example.service.impl;
 
 import org.example.service.IBankAccountPrinterService;
 import org.example.service.IBankAccountService;

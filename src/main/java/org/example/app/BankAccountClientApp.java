@@ -1,19 +1,15 @@
 package org.example.app;
 import org.example.service.IBankAccountPrinterService;
 import org.example.service.IBankAccountService;
-import org.example.service.org.example.service.impl.BankClientAccountImpl;
-import org.example.service.org.example.service.impl.ConsoleAccountPrinterImpl;
+import org.example.service.impl.BankClientAccountImpl;
+import org.example.service.impl.ConsoleAccountPrinterImpl;
 
 import java.math.BigDecimal;
-import java.time.format.DateTimeFormatter;
 
 public class BankAccountClientApp {
 
-    private IBankAccountService bankAccount;
-
-
-    public static void main(String[] args) throws InterruptedException {
-        // Create client account in memory for example
+    public static void main(String[] args) {
+        // Create client account in memory for kata example
         IBankAccountService account = BankClientAccountImpl.getInstance();
 
         // Deposit

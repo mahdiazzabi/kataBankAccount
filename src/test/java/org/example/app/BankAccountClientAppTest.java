@@ -1,8 +1,8 @@
 package org.example.app;
 
-import org.example.org.example.domain.Transaction;
+import org.example.domain.Transaction;
 import org.example.service.IBankAccountService;
-import org.example.service.org.example.service.impl.BankClientAccountImpl;
+import org.example.service.impl.BankClientAccountImpl;
 import org.junit.Test;
 
 import java.math.BigDecimal;

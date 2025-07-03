@@ -1,6 +1,6 @@
-package org.example.service.org.example.service.impl;
+package org.example.service.impl;
 
-import org.example.org.example.domain.Transaction;
+import org.example.domain.Transaction;
 import org.example.service.IBankAccountService;
 
 import java.math.BigDecimal;
@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
+
 /**
  * In-memory implementation of the {@link IBankAccountService} interface.
  * <p>

@@ -1,6 +1,6 @@
 package org.example.service;
 
-import org.example.org.example.domain.Transaction;
+import org.example.domain.Transaction;
 
 import java.math.BigDecimal;
 import java.util.Map;
