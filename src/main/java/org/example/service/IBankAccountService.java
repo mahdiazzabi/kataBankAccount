@@ -16,6 +16,14 @@ public interface IBankAccountService {
     void deposit(BigDecimal amount);
 
     /**
+     * Withdraws the specified amount from the account.
+     *
+     * @param amount the amount to withdraw; must be positive and less than or equal to current balance
+     * @throws IllegalArgumentException if amount is zero, negative, or exceeds current balance
+     */
+    void withdraw(BigDecimal amount);
+
+    /**
      * Returns the map of all transactions made on this account.
      *
      * @return a map of transaction IDs to {@link Transaction} objects

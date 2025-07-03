@@ -17,6 +17,10 @@ public class BankAccountClientApp {
         account.deposit(new BigDecimal("250.50"));
         account.deposit(new BigDecimal("50.00"));
 
+        // Retraits
+        account.withdraw(new BigDecimal("80.00"));
+        account.withdraw(new BigDecimal("25.50"));
+
         // Display transactions and Current Balance
         IBankAccountPrinterService printer = new ConsoleAccountPrinterImpl();
         printer.printTransactionHistory(account);
